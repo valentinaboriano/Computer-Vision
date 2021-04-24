@@ -120,10 +120,13 @@ def task3():
 def main(argv):
     n = len(argv)
     if n < 2:
-        print("Error: you need to specify which task you want to run.\n"
-              "1, 2 and 3 are possible choices")
-        return 1
-    task = argv[1]
+        print("Which task do you want to run?\n"
+              "1.\tApple segmentation and edge detection\n"
+              "2.\tApple russet detection\n"
+              "3.\tKiwi inspection\n")
+        task = input()
+    else:
+        task = argv[1]
     if task == "1":
         task1()
     elif task == "2":
