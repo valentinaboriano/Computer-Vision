@@ -9,6 +9,6 @@ By Valentina Boriano (valentina.boriano@studio.unibo.it) and Pietro Fanti (pietr
 ## How to run
 
 ```
-fruit_inspection.py TASK
+fruit_inspection.py [TASK]
 ```
-Where TASK is 1,2 or 3
+Where TASK is 1,2 or 3. If TASK is not specified the user will have the wanted task asked on run-time.
