@@ -102,7 +102,7 @@ def task3():
         kernel = np.ones((5, 5), np.uint8)
         mask = cv2.dilate(mask, kernel)
         cv2.floodFill(mask, None, (0, 0), 1)
-        is_bad = np.all(mask)
+        is_good = np.all(mask)
         x, y = mask.shape
         for j in range(x):
             for k in range(y):
@@ -110,7 +110,7 @@ def task3():
                     img_rgb[j, k, 0] = 255
                     img_rgb[j, k, 1] = 0
                     img_rgb[j, k, 2] = 0
-        title = "Good Kiwi" if is_bad else "Bad Kiwi"
+        title = "Good Kiwi" if is_good else "Bad Kiwi"
         plt.subplot(1, n, i + 1).axis("off")
         plt.title(title)
         plt.imshow(img_rgb)
