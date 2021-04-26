@@ -18,6 +18,14 @@ def task1():
         ret, mask = cv2.threshold(mask, 0, 1, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
         mask = mask + 1
         cv2.floodFill(mask, None, (0, 0), 0)
+        # Erosion of the binary mask. It will help to proper remove apple edges
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3,3))
+        mask = cv2.erode(mask, kernel, iterations = 1)
+        # We have setted background to 0, so a pixelwise multiplication is sufficient
+        edge = edges[i] * mask
+        # Dilation of the edges. It will help to distinguish better edges when applied on the rgb images later.
+        #It would be useless in a real application, it is for demonstration purposes only
+        edge = cv2.dilate(edge, kernel, iterations = 1)
         # Edge detection
         edge = cv2.Canny(img, 50, 230)
         edge = edge * mask
